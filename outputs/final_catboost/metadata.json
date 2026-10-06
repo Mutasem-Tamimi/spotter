@@ -1,0 +1,55 @@
+{
+  "model": "CatBoost depth 6 MAE",
+  "parameters": {
+    "iterations": 94,
+    "depth": 6,
+    "loss_function": "MAE",
+    "eval_metric": "MAE",
+    "custom_metric": [
+      "MAE"
+    ],
+    "learning_rate": 0.05,
+    "l2_leaf_reg": 3,
+    "random_seed": 42,
+    "thread_count": 4,
+    "has_time": true,
+    "nan_mode": "Min",
+    "allow_writing_files": false,
+    "cat_features": [
+      "pickup",
+      "delivery",
+      "equipment"
+    ],
+    "verbose": false
+  },
+  "training_rows": 48000,
+  "training_start": "2025-01-01",
+  "training_end": "2025-10-31",
+  "prediction_rows": 12000,
+  "output": "validation-predictions.csv",
+  "output_columns": [
+    "load_id",
+    "predicted_rate"
+  ],
+  "alignment": "Matched by load_id; original template order preserved",
+  "price_precision": "USD, two decimal places",
+  "source_sha256": {
+    "train-test.csv": "892980fd20bac7ac0ca4ec31d3981fca48d52dec88e4f02642ab955f1efb40fe",
+    "validation.csv": "f6cdc7c367b397b90b319fc7ad30fd0e1893fd6a714816dda54c303b0fe71151",
+    "december-chart-inputs.csv": "d4a0cba969e315eae3c967268914960547dc6589568e07bf6182551bdc267e6e",
+    "validation-predictions-template.csv": "79de15adabcf807b8636b9b47ebe964d451fbcb343056c44a2c4b54a219891c6"
+  },
+  "output_sha256": "d870496610c781065b69b2db1d0479b2b55d6a67e1401b2c0c86792ad53947b8",
+  "catboost_version": "1.2.10",
+  "checks": {
+    "schema_and_ids_valid": true,
+    "all_predictions_finite_positive": true,
+    "model_reload_matches": true,
+    "template_order_preserved": true,
+    "source_csvs_unchanged": true,
+    "original_evaluation_artifacts_unchanged": true
+  },
+  "generated_by": "notebooks/04_final_validation_predictions.ipynb",
+  "previous_output_reproduced_exactly": true,
+  "evaluation_note": "Refitted on all January-October labels. Earlier test scores describe the January-August evaluation model; November-December true prices are unavailable."
+}

@@ -1,0 +1,143 @@
+feature,importance
+numeric__distance,0.92172784
+categorical__equipment_Dry Van,0.02960504
+categorical__equipment_Reefer,0.013013289
+numeric__days_since_start,0.009769063
+numeric__weight,0.008442382
+numeric__pickup_lon,0.0062898416
+numeric__delivery_lon,0.0047856737
+numeric__delivery_lat,0.0032660635
+numeric__pickup_lat,0.0031007796
+numeric__weight_was_negative,0.0
+numeric__day_of_month,0.0
+categorical__pickup_Albany,0.0
+numeric__weight_is_missing,0.0
+numeric__day_of_week,0.0
+categorical__pickup_Amarillo,0.0
+categorical__pickup_Albuquerque,0.0
+categorical__pickup_Atlanta,0.0
+categorical__pickup_Austin,0.0
+categorical__pickup_Baton Rouge,0.0
+categorical__pickup_Birmingham,0.0
+categorical__pickup_Bakersfield,0.0
+categorical__pickup_Baltimore,0.0
+categorical__pickup_Charleston,0.0
+categorical__pickup_Chattanooga,0.0
+categorical__pickup_Cincinnati,0.0
+categorical__pickup_Columbia,0.0
+categorical__pickup_Corpus Christi,0.0
+categorical__pickup_Dallas,0.0
+categorical__pickup_Boston,0.0
+categorical__pickup_Buffalo,0.0
+categorical__pickup_El Paso,0.0
+categorical__pickup_Fort Wayne,0.0
+categorical__pickup_Fresno,0.0
+categorical__pickup_Grand Rapids,0.0
+categorical__pickup_Green Bay,0.0
+categorical__pickup_Greensboro,0.0
+categorical__pickup_Harrisburg,0.0
+categorical__pickup_Hartford,0.0
+categorical__pickup_Houston,0.0
+categorical__pickup_Indianapolis,0.0
+categorical__pickup_Jacksonville,0.0
+categorical__pickup_Kansas City,0.0
+categorical__pickup_Las Vegas,0.0
+categorical__pickup_Lexington,0.0
+categorical__pickup_Dayton,0.0
+categorical__pickup_Detroit,0.0
+categorical__pickup_Louisville,0.0
+categorical__pickup_Lubbock,0.0
+categorical__pickup_Madison,0.0
+categorical__pickup_Memphis,0.0
+categorical__pickup_Milwaukee,0.0
+categorical__pickup_Mobile,0.0
+categorical__pickup_Montgomery,0.0
+categorical__pickup_Nashville,0.0
+categorical__pickup_New Orleans,0.0
+categorical__pickup_New York,0.0
+categorical__pickup_Oklahoma City,0.0
+categorical__pickup_Philadelphia,0.0
+categorical__pickup_Phoenix,0.0
+categorical__pickup_Providence,0.0
+categorical__pickup_Raleigh,0.0
+categorical__pickup_Reno,0.0
+categorical__pickup_Richmond,0.0
+categorical__pickup_Salt Lake City,0.0
+categorical__pickup_San Antonio,0.0
+categorical__pickup_San Francisco,0.0
+categorical__pickup_Savannah,0.0
+categorical__pickup_Shreveport,0.0
+categorical__pickup_St. Louis,0.0
+categorical__pickup_Syracuse,0.0
+categorical__pickup_Tampa,0.0
+categorical__pickup_Toledo,0.0
+categorical__pickup_Tucson,0.0
+categorical__pickup_Tulsa,0.0
+categorical__pickup_Washington,0.0
+categorical__delivery_Albany,0.0
+categorical__pickup_Little Rock,0.0
+categorical__pickup_Los Angeles,0.0
+categorical__delivery_Amarillo,0.0
+categorical__delivery_Albuquerque,0.0
+categorical__delivery_Atlanta,0.0
+categorical__delivery_Austin,0.0
+categorical__delivery_Baton Rouge,0.0
+categorical__delivery_Birmingham,0.0
+categorical__delivery_Bakersfield,0.0
+categorical__delivery_Baltimore,0.0
+categorical__delivery_Charleston,0.0
+categorical__delivery_Chattanooga,0.0
+categorical__delivery_Cincinnati,0.0
+categorical__delivery_Columbia,0.0
+categorical__delivery_Corpus Christi,0.0
+categorical__delivery_Dallas,0.0
+categorical__delivery_Boston,0.0
+categorical__delivery_Buffalo,0.0
+categorical__delivery_El Paso,0.0
+categorical__delivery_Fort Wayne,0.0
+categorical__delivery_Fresno,0.0
+categorical__delivery_Grand Rapids,0.0
+categorical__delivery_Green Bay,0.0
+categorical__delivery_Greensboro,0.0
+categorical__delivery_Harrisburg,0.0
+categorical__delivery_Hartford,0.0
+categorical__delivery_Houston,0.0
+categorical__delivery_Indianapolis,0.0
+categorical__delivery_Jacksonville,0.0
+categorical__delivery_Kansas City,0.0
+categorical__delivery_Las Vegas,0.0
+categorical__delivery_Lexington,0.0
+categorical__delivery_Dayton,0.0
+categorical__delivery_Detroit,0.0
+categorical__delivery_Los Angeles,0.0
+categorical__delivery_Little Rock,0.0
+categorical__delivery_Louisville,0.0
+categorical__delivery_Lubbock,0.0
+categorical__delivery_Milwaukee,0.0
+categorical__delivery_Mobile,0.0
+categorical__delivery_Madison,0.0
+categorical__delivery_Memphis,0.0
+categorical__delivery_New Orleans,0.0
+categorical__delivery_New York,0.0
+categorical__delivery_Oklahoma City,0.0
+categorical__delivery_Philadelphia,0.0
+categorical__delivery_Phoenix,0.0
+categorical__delivery_Providence,0.0
+categorical__delivery_Montgomery,0.0
+categorical__delivery_Nashville,0.0
+categorical__delivery_Reno,0.0
+categorical__delivery_Raleigh,0.0
+categorical__delivery_Richmond,0.0
+categorical__delivery_Salt Lake City,0.0
+categorical__delivery_Savannah,0.0
+categorical__delivery_Shreveport,0.0
+categorical__delivery_San Antonio,0.0
+categorical__delivery_San Francisco,0.0
+categorical__delivery_Syracuse,0.0
+categorical__delivery_St. Louis,0.0
+categorical__delivery_Tampa,0.0
+categorical__delivery_Toledo,0.0
+categorical__delivery_Tulsa,0.0
+categorical__delivery_Tucson,0.0
+categorical__delivery_Washington,0.0
+categorical__equipment_Flatbed,0.0

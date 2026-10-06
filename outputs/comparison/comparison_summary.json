@@ -1,0 +1,16 @@
+{
+  "development_MAE_leader": "XGBoost",
+  "reused_test_MAE_leader": "CatBoost",
+  "reused_test_RMSE_leader": "XGBoost",
+  "rows_per_test_model": 9523,
+  "evaluation_period": "2025-09-01 through 2025-10-31",
+  "preserved_snapshot": "outputs/snapshots/catboost_baseline_2026-10-05.zip",
+  "source_sha256": {
+    "train-test.csv": "892980fd20bac7ac0ca4ec31d3981fca48d52dec88e4f02642ab955f1efb40fe",
+    "validation.csv": "f6cdc7c367b397b90b319fc7ad30fd0e1893fd6a714816dda54c303b0fe71151",
+    "december-chart-inputs.csv": "d4a0cba969e315eae3c967268914960547dc6589568e07bf6182551bdc267e6e",
+    "validation-predictions-template.csv": "79de15adabcf807b8636b9b47ebe964d451fbcb343056c44a2c4b54a219891c6"
+  },
+  "protected_baseline_files_verified": 22,
+  "evaluation_status": "Reused comparison period already examined in prior CatBoost cycle; not a fresh holdout."
+}

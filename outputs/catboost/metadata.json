@@ -1,0 +1,98 @@
+{
+  "selected_model": "CatBoost depth 6 MAE",
+  "selected_trees": 94,
+  "selection_metric": "Development MAE in total dollars",
+  "candidates": [
+    {
+      "name": "CatBoost depth 6 MAE",
+      "depth": 6,
+      "loss_function": "MAE"
+    },
+    {
+      "name": "CatBoost depth 8 MAE",
+      "depth": 8,
+      "loss_function": "MAE"
+    },
+    {
+      "name": "CatBoost depth 6 RMSE",
+      "depth": 6,
+      "loss_function": "RMSE"
+    }
+  ],
+  "max_iterations": 1200,
+  "early_stopping_patience": 100,
+  "parameters": {
+    "iterations": 94,
+    "depth": 6,
+    "loss_function": "MAE",
+    "eval_metric": "MAE",
+    "custom_metric": [
+      "MAE"
+    ],
+    "learning_rate": 0.05,
+    "l2_leaf_reg": 3,
+    "random_seed": 42,
+    "thread_count": 4,
+    "has_time": true,
+    "nan_mode": "Min",
+    "allow_writing_files": false,
+    "cat_features": [
+      "pickup",
+      "delivery",
+      "equipment"
+    ],
+    "verbose": false
+  },
+  "train_end_exclusive": "2025-07-01",
+  "dev_end_exclusive": "2025-09-01",
+  "saved_model_fit_rows": 38477,
+  "saved_model_fit_end": "2025-08-31",
+  "features": [
+    "pickup",
+    "delivery",
+    "equipment",
+    "distance",
+    "weight",
+    "weight_is_missing",
+    "weight_was_negative",
+    "pickup_lat",
+    "pickup_lon",
+    "delivery_lat",
+    "delivery_lon",
+    "days_since_start",
+    "day_of_week",
+    "day_of_month"
+  ],
+  "excluded_columns": [
+    "load_id",
+    "posted_rate",
+    "predicted_rate",
+    "quote_signal",
+    "market_index"
+  ],
+  "negative_weights": "absolute value in memory; source CSVs unchanged",
+  "missing_numerical_values": "NaN retained; explicit weight missing indicator",
+  "prediction_floor_dollars": 0.01,
+  "test_predictions_floored": 0,
+  "source_sha256": {
+    "train-test.csv": "892980fd20bac7ac0ca4ec31d3981fca48d52dec88e4f02642ab955f1efb40fe",
+    "validation.csv": "f6cdc7c367b397b90b319fc7ad30fd0e1893fd6a714816dda54c303b0fe71151",
+    "december-chart-inputs.csv": "d4a0cba969e315eae3c967268914960547dc6589568e07bf6182551bdc267e6e",
+    "validation-predictions-template.csv": "79de15adabcf807b8636b9b47ebe964d451fbcb343056c44a2c4b54a219891c6"
+  },
+  "versions": {
+    "python": "3.13.7",
+    "catboost": "1.2.10",
+    "sklearn": "1.9.1",
+    "pandas": "3.0.6",
+    "numpy": "2.5.3",
+    "joblib": "1.6.0"
+  },
+  "limitations": [
+    "September-October was held out from model selection, but was previously seen during EDA.",
+    "No unseen cities occur in the local dev/test periods; unseen-city accuracy is unmeasured.",
+    "Ordinal date trees cannot extrapolate trends beyond the fitted time range.",
+    "November-December targets are hidden; no final-file accuracy can be reported.",
+    "The saved model was refitted on January-August, not on all labeled rows."
+  ]
+}

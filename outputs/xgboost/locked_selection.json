@@ -1,0 +1,15 @@
+{
+  "selected_model": "XGBoost depth 4 MAE",
+  "selected_rounds": 81,
+  "parameters": {
+    "n_estimators": 81,
+    "max_depth": 4,
+    "objective": "reg:absoluteerror",
+    "learning_rate": 0.05,
+    "eval_metric": "mae",
+    "tree_method": "hist",
+    "n_jobs": 2,
+    "random_state": 42,
+    "verbosity": 0
+  }
+}

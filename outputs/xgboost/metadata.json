@@ -1,0 +1,110 @@
+{
+  "candidates": [
+    {
+      "name": "XGBoost depth 4 MAE",
+      "max_depth": 4,
+      "objective": "reg:absoluteerror"
+    },
+    {
+      "name": "XGBoost depth 6 MAE",
+      "max_depth": 6,
+      "objective": "reg:absoluteerror"
+    },
+    {
+      "name": "XGBoost depth 4 squared error",
+      "max_depth": 4,
+      "objective": "reg:squarederror"
+    }
+  ],
+  "max_rounds": 1200,
+  "early_stopping_patience": 100,
+  "selection_metric": "Development MAE in total dollars",
+  "train_end_exclusive": "2025-07-01",
+  "dev_end_exclusive": "2025-09-01",
+  "seed": 42,
+  "cleaning": "In-memory absolute weight; training-only numerical medians; dense one-hot categories",
+  "test_policy": "September-October evaluated after locking candidate and rounds; no post-test tuning",
+  "selected_model": "XGBoost depth 4 MAE",
+  "selected_rounds": 81,
+  "parameters": {
+    "n_estimators": 81,
+    "max_depth": 4,
+    "objective": "reg:absoluteerror",
+    "learning_rate": 0.05,
+    "eval_metric": "mae",
+    "tree_method": "hist",
+    "n_jobs": 2,
+    "random_state": 42,
+    "verbosity": 0
+  },
+  "saved_model_fit_rows": 38477,
+  "saved_model_fit_end": "2025-08-31",
+  "refit_seconds": 0.49048219999531284,
+  "features": [
+    "pickup",
+    "delivery",
+    "equipment",
+    "distance",
+    "weight",
+    "weight_is_missing",
+    "weight_was_negative",
+    "pickup_lat",
+    "pickup_lon",
+    "delivery_lat",
+    "delivery_lon",
+    "days_since_start",
+    "day_of_week",
+    "day_of_month"
+  ],
+  "encoded_feature_count": 142,
+  "excluded_columns": [
+    "load_id",
+    "posted_rate",
+    "predicted_rate",
+    "quote_signal",
+    "market_index"
+  ],
+  "prediction_floor_dollars": 0.01,
+  "test_predictions_floored": 0,
+  "baseline_test_metrics": {
+    "MAE": 229.09657316845033,
+    "RMSE": 670.6599545300177,
+    "R2": 0.8068628254206316,
+    "bias": 40.92857341026478,
+    "median_absolute_error": 115.7156754178261,
+    "MAPE_percent": 10.487418950668491,
+    "within_5_percent": 38.46476950540796,
+    "within_10_percent": 67.38422765935105,
+    "within_20_percent": 92.68087787461934
+  },
+  "source_sha256": {
+    "train-test.csv": "892980fd20bac7ac0ca4ec31d3981fca48d52dec88e4f02642ab955f1efb40fe",
+    "validation.csv": "f6cdc7c367b397b90b319fc7ad30fd0e1893fd6a714816dda54c303b0fe71151",
+    "december-chart-inputs.csv": "d4a0cba969e315eae3c967268914960547dc6589568e07bf6182551bdc267e6e",
+    "validation-predictions-template.csv": "79de15adabcf807b8636b9b47ebe964d451fbcb343056c44a2c4b54a219891c6"
+  },
+  "versions": {
+    "python": "3.13.7",
+    "xgboost": "3.4.1",
+    "sklearn": "1.9.1",
+    "pandas": "3.0.6",
+    "numpy": "2.5.3",
+    "joblib": "1.6.0"
+  },
+  "checks": {
+    "split_manifest_matches_catboost": true,
+    "saved_pipeline_reload_predictions_match": true,
+    "december_reduced_schema_predicts_finite_positive_rates": true,
+    "unseen_categories_predict_without_error": true,
+    "inference_does_not_mutate_input": true,
+    "source_csv_hashes_unchanged": true
+  },
+  "limitations": [
+    "September-October was already inspected during the CatBoost cycle; it is a reused benchmark, not a fresh untouched holdout.",
+    "No test metric was used for candidate selection, early stopping, or post-test tuning in this run.",
+    "One-hot encoding maps unseen categories to all-zero blocks; their remaining numerical features still contribute.",
+    "No unseen cities occur in local dev/test, so unseen-city prediction accuracy is unmeasured.",
+    "November-December targets are hidden; final-file accuracy is unknown.",
+    "Saved pipeline is fitted through August only; no submission or final-data refit was performed."
+  ]
+}

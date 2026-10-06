@@ -1,0 +1,27 @@
+{
+  "candidates": [
+    {
+      "name": "XGBoost depth 4 MAE",
+      "max_depth": 4,
+      "objective": "reg:absoluteerror"
+    },
+    {
+      "name": "XGBoost depth 6 MAE",
+      "max_depth": 6,
+      "objective": "reg:absoluteerror"
+    },
+    {
+      "name": "XGBoost depth 4 squared error",
+      "max_depth": 4,
+      "objective": "reg:squarederror"
+    }
+  ],
+  "max_rounds": 1200,
+  "early_stopping_patience": 100,
+  "selection_metric": "Development MAE in total dollars",
+  "train_end_exclusive": "2025-07-01",
+  "dev_end_exclusive": "2025-09-01",
+  "seed": 42,
+  "cleaning": "In-memory absolute weight; training-only numerical medians; dense one-hot categories",
+  "test_policy": "September-October evaluated after locking candidate and rounds; no post-test tuning"
+}

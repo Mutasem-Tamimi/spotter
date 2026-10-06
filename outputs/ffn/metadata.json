@@ -1,0 +1,112 @@
+{
+  "selected_model": "FFN 128-64 alpha .001",
+  "selected_architecture": [
+    128,
+    64
+  ],
+  "selected_alpha": 0.001,
+  "selected_epochs": 2,
+  "selection_metric": "July-August MAE in total dollars",
+  "candidates": [
+    {
+      "name": "FFN 64-32 alpha .001",
+      "hidden_layer_sizes": [
+        64,
+        32
+      ],
+      "alpha": 0.001
+    },
+    {
+      "name": "FFN 128-64 alpha .001",
+      "hidden_layer_sizes": [
+        128,
+        64
+      ],
+      "alpha": 0.001
+    },
+    {
+      "name": "FFN 64-32 alpha .01",
+      "hidden_layer_sizes": [
+        64,
+        32
+      ],
+      "alpha": 0.01
+    }
+  ],
+  "max_epochs": 200,
+  "early_stopping_patience": 25,
+  "optimizer": "Adam",
+  "loss": "squared_error",
+  "activation": "relu",
+  "learning_rate_init": 0.001,
+  "batch_size": 256,
+  "seed": 42,
+  "train_end_exclusive": "2025-07-01",
+  "dev_end_exclusive": "2025-09-01",
+  "saved_model_fit_rows": 38477,
+  "saved_model_fit_end": "2025-08-31",
+  "features": [
+    "pickup",
+    "delivery",
+    "equipment",
+    "distance",
+    "weight",
+    "weight_is_missing",
+    "weight_was_negative",
+    "pickup_lat",
+    "pickup_lon",
+    "delivery_lat",
+    "delivery_lon",
+    "days_since_start",
+    "day_of_week",
+    "day_of_month"
+  ],
+  "encoded_feature_count": 142,
+  "excluded_columns": [
+    "load_id",
+    "posted_rate",
+    "predicted_rate",
+    "quote_signal",
+    "market_index"
+  ],
+  "preprocessing": {
+    "negative_weight": "Absolute value in memory, original CSV unchanged; sign flag retained",
+    "numerical": "Training-only median imputation then StandardScaler; weight missing flag retained",
+    "categorical": "Training-only dense one-hot encoding; unseen categories ignored",
+    "coordinates": "Kept separate; training-only city lookup supplies omitted coordinates; an unknown city with absent coordinates receives training-median coordinates, which do not recover its true location",
+    "target": "Training-only StandardScaler; inverse transformed to total dollars",
+    "target_center": 2369.40951191621,
+    "target_scale": 1476.4836975909152
+  },
+  "prediction_floor_dollars": 0.01,
+  "test_predictions_floored": 0,
+  "source_sha256": {
+    "train-test.csv": "892980fd20bac7ac0ca4ec31d3981fca48d52dec88e4f02642ab955f1efb40fe",
+    "validation.csv": "f6cdc7c367b397b90b319fc7ad30fd0e1893fd6a714816dda54c303b0fe71151",
+    "december-chart-inputs.csv": "d4a0cba969e315eae3c967268914960547dc6589568e07bf6182551bdc267e6e",
+    "validation-predictions-template.csv": "79de15adabcf807b8636b9b47ebe964d451fbcb343056c44a2c4b54a219891c6"
+  },
+  "elapsed_seconds": 8.826704899955075,
+  "checks": {
+    "source_csvs_unchanged": true,
+    "save_reload_prediction_match": true,
+    "december_reduced_schema_rows": 31,
+    "december_predictions_finite_positive": true
+  },
+  "versions": {
+    "python": "3.13.7",
+    "sklearn": "1.9.1",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "joblib": "1.6.0"
+  },
+  "limitations": [
+    "September-October had previously been inspected during EDA and CatBoost evaluation; it is a reused local comparison period, not a fresh holdout.",
+    "No FFN hyperparameters or epoch counts were selected using September-October targets.",
+    "No unseen cities occur in local dev/test; unseen-city accuracy remains unmeasured.",
+    "The neural network may extrapolate time features unpredictably beyond training dates.",
+    "November-December targets are hidden and no final-file accuracy can be measured.",
+    "The saved model was refitted on January-August, not on all labeled rows.",
+    "One fixed seed and three bounded candidates were compared; this is not an exhaustive neural-network search."
+  ]
+}

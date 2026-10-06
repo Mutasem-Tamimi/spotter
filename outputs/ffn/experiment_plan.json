@@ -1,0 +1,39 @@
+{
+  "candidates": [
+    {
+      "name": "FFN 64-32 alpha .001",
+      "hidden_layer_sizes": [
+        64,
+        32
+      ],
+      "alpha": 0.001
+    },
+    {
+      "name": "FFN 128-64 alpha .001",
+      "hidden_layer_sizes": [
+        128,
+        64
+      ],
+      "alpha": 0.001
+    },
+    {
+      "name": "FFN 64-32 alpha .01",
+      "hidden_layer_sizes": [
+        64,
+        32
+      ],
+      "alpha": 0.01
+    }
+  ],
+  "max_epochs": 200,
+  "patience": 25,
+  "selection_metric": "July-August MAE in total dollars",
+  "target_transform": "Training-only StandardScaler; invert to total dollars",
+  "optimizer": "Adam",
+  "loss": "squared_error",
+  "activation": "relu",
+  "learning_rate": 0.001,
+  "batch_size": 256,
+  "seed": 42,
+  "test_use": "September-October evaluated after model and epoch count are locked"
+}

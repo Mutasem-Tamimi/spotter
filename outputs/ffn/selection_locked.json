@@ -1,0 +1,13 @@
+{
+  "selected_candidate": {
+    "name": "FFN 128-64 alpha .001",
+    "hidden_layer_sizes": [
+      128,
+      64
+    ],
+    "alpha": 0.001
+  },
+  "selected_epochs": 2,
+  "selection_metric": "Development MAE",
+  "test_seen_in_this_run": false
+}
