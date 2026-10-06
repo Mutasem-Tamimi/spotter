@@ -1,6 +1,7 @@
 SPOTTER SUBMISSION
 
 Repository: https://github.com/Mutasem-Tamimi/spotter
+Visibility: intentionally private; owner will arrange assessor access.
 Final prediction file: validation_predictions.csv
 Report: output/pdf/freight_rate_report.pdf
 December predictions: december_predictions.csv

@@ -343,4 +343,5 @@ installed English System.Speech voice:
 - `output/pdf/freight_rate_report.pdf` (includes the required December chart)
 - The 2-3 minute Loom share link after the handoff above
 
+The repository is intentionally private; the owner will arrange assessor access.
 The supplied assessment instructions in `readme-spotter.md` are unchanged.
