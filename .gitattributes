@@ -1,5 +1,11 @@
 # Preserve exact bytes for data hashes and binary deliverables on every OS.
-*.csv -text
+/train-test.csv -text
+/validation.csv -text
+/december-chart-inputs.csv -text
+/validation-predictions-template.csv -text
+/validation-predictions.csv -text
+/validation_predictions.csv -text
+/december_predictions.csv -text
 *.pdf binary
 *.png binary
 *.mp4 binary

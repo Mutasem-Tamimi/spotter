@@ -54,8 +54,12 @@ def prepare_predictions(root):
     np.testing.assert_allclose(saved_validation.predicted_rate, filled.predicted_rate,
                                rtol=0, atol=.005000001)
     previous = root / "validation-predictions.csv"
-    if previous.exists() and sha256(previous) != sha256(validation_path):
-        raise AssertionError("Submission copy differs from the earlier final predictions.")
+    if previous.exists():
+        earlier = pd.read_csv(previous)
+        validate_predictions(earlier)
+        pd.testing.assert_frame_equal(earlier, saved_validation, check_exact=True)
+        # Preserve the earlier file's exact newline convention on any OS.
+        validation_path.write_bytes(previous.read_bytes())
 
     raw_december = pd.read_csv(root / "december-chart-inputs.csv")
     completed_december = raw_december.copy()
