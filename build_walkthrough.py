@@ -5,6 +5,7 @@ The generated MP4 is a project explanation, not a recording of the applicant.
 """
 from pathlib import Path
 import json
+import shutil
 import subprocess
 import textwrap
 import wave
@@ -152,13 +153,35 @@ $narrator.Dispose()
         elapsed+=duration
         print(f'Clip {i}: {duration:.1f} seconds',flush=True)
     concat=WORK/'clips.txt';concat.write_text('\n'.join(clips))
-    video=OUT/'spotter_walkthrough.mp4'
+    assembled=WORK/'assembled.mp4'
     subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-y','-f','concat','-safe','0','-i',str(concat),
-                    '-c','copy','-movflags','+faststart',str(video)],check=True)
+                    '-c','copy',str(assembled)],check=True)
+    # Normalize narration in two passes and explicitly select it as the default
+    # audio track. Keep the original video stream, so slide timing is unchanged.
+    audio_format='aformat=sample_rates=48000:channel_layouts=stereo,'
+    analysis=subprocess.run(['ffmpeg','-hide_banner','-nostats','-i',str(assembled),
+        '-vn','-af',audio_format+'loudnorm=I=-16:TP=-1.5:LRA=7:print_format=json',
+        '-f','null','-'],check=True,capture_output=True,text=True)
+    measured,_=json.JSONDecoder().raw_decode(analysis.stderr[analysis.stderr.rfind('{'):].strip())
+    normalize=(f"loudnorm=I=-16:TP=-1.5:LRA=7:measured_I={measured['input_i']}:"
+        f"measured_TP={measured['input_tp']}:measured_LRA={measured['input_lra']}:"
+        f"measured_thresh={measured['input_thresh']}:offset={measured['target_offset']}:"
+        'linear=true:print_format=summary')
+    video=OUT/'spotter_walkthrough.mp4'
+    subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-y','-i',str(assembled),
+        '-map','0:v:0','-map','0:a:0','-c:v','copy','-c:a','aac','-b:a','192k',
+        '-ar','48000','-ac','2','-af',audio_format+normalize,'-disposition:a:0','default',
+        '-metadata:s:a:0','language=eng','-metadata:s:a:0','title=English voice explanation',
+        '-movflags','+faststart',str(video)],check=True)
+    named_video=OUT/'spotter_walkthrough_with_voice.mp4'
+    shutil.copyfile(video,named_video)
     if not 120 <= elapsed <= 180:
         raise ValueError(f'Walkthrough must last 2-3 minutes; got {elapsed:.1f} seconds')
     (OUT/'walkthrough_timeline.json').write_text(json.dumps({'duration_seconds':round(elapsed,2),
         'narration':'Standard Windows English synthetic voice; not the applicant\'s voice',
+        'voice_video':named_video.name,
+        'audio':{'codec':'AAC','sample_rate_hz':48000,'channels':2,'default':True,
+                 'language':'English','target_loudness_lufs':-16,'true_peak_limit_dbtp':-1.5},
         'segments':timeline},indent=2))
     print(f'Saved {video} ({elapsed:.1f} seconds)',flush=True)
 

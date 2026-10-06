@@ -9,7 +9,7 @@ Required chart: scorer_results/candidate_december.png
 Executed final workflow: notebooks/05_submission_and_report.ipynb
 
 LOOM LINK: pending user upload or recording.
-Prepared video: output/video/spotter_walkthrough.mp4 (2 minutes 39 seconds)
+Prepared video: output/video/spotter_walkthrough_with_voice.mp4 (2 minutes 39 seconds)
 Script: walkthrough_script.txt
 The video uses clearly labeled computer-generated narration, not the applicant's voice.
 Browser security blocked automated recording controls. Upload the MP4 to Loom

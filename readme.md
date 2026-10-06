@@ -272,7 +272,7 @@ the PDF report and verify preservation of the earlier work.
 | Five-page PDF report | [`output/pdf/freight_rate_report.pdf`](output/pdf/freight_rate_report.pdf) |
 | Scorer output | [`scorer_results/scorer_output.txt`](scorer_results/scorer_output.txt) |
 | Prediction audit and hashes | [`outputs/submission/submission_checks.json`](outputs/submission/submission_checks.json) |
-| 2 minute 39 second walkthrough video | [`output/video/spotter_walkthrough.mp4`](output/video/spotter_walkthrough.mp4) |
+| 2 minute 39 second walkthrough with voice | [`output/video/spotter_walkthrough_with_voice.mp4`](output/video/spotter_walkthrough_with_voice.mp4) |
 | Walkthrough script | [`walkthrough_script.txt`](walkthrough_script.txt) |
 
 The official underscore-named validation file contains exactly the same bytes
@@ -323,6 +323,8 @@ The local video covers exploration findings, data quality, model choice, the
 chronological split, actual code excerpts and the December chart. It uses a
 clearly labeled standard computer-generated English narrator, not the applicant's
 voice. It is 159.5 seconds long, with 1080p video and an audio track.
+The English narration is volume-normalized and marked as the default stereo
+audio track. `spotter_walkthrough.mp4` also contains this updated audio.
 
 **The required Loom link is still pending.** Browser security blocked the
 recording controls. Upload the prepared MP4 in your Loom account if available,

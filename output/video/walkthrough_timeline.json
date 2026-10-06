@@ -1,6 +1,16 @@
 {
   "duration_seconds": 159.43,
   "narration": "Standard Windows English synthetic voice; not the applicant's voice",
+  "voice_video": "spotter_walkthrough_with_voice.mp4",
+  "audio": {
+    "codec": "AAC",
+    "sample_rate_hz": 48000,
+    "channels": 2,
+    "default": true,
+    "language": "English",
+    "target_loudness_lufs": -16,
+    "true_peak_limit_dbtp": -1.5
+  },
   "segments": [
     {
       "title": "Problem and key findings",
