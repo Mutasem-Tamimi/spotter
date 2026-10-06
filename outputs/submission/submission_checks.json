@@ -1,0 +1,38 @@
+{
+  "model": "CatBoost depth 6, MAE loss, 94 trees, seed 42",
+  "training_rows": 48000,
+  "training_end": "2025-10-31",
+  "model_sha256": "ab5c313c4c7253dcb4883b13d5ff06ca1d4408a904426195d87c1a96d94c4fe4",
+  "source_sha256": {
+    "train-test.csv": "892980fd20bac7ac0ca4ec31d3981fca48d52dec88e4f02642ab955f1efb40fe",
+    "validation.csv": "f6cdc7c367b397b90b319fc7ad30fd0e1893fd6a714816dda54c303b0fe71151",
+    "december-chart-inputs.csv": "d4a0cba969e315eae3c967268914960547dc6589568e07bf6182551bdc267e6e",
+    "validation-predictions-template.csv": "79de15adabcf807b8636b9b47ebe964d451fbcb343056c44a2c4b54a219891c6"
+  },
+  "readme_spotter_sha256": "dfc6ccd4843ed1c07e9d9ad131e23e755039fbe2f6e644a92677979a08c04028",
+  "validation_rows": 12000,
+  "december_rows": 31,
+  "december_min": 818.09,
+  "december_max": 826.55,
+  "december_unique_prices": 9,
+  "december_coordinates": {
+    "pickup_lat": 36.99152,
+    "pickup_lon": -84.99876,
+    "delivery_lat": 41.31561,
+    "delivery_lon": -85.36206
+  },
+  "output_sha256": {
+    "validation_predictions.csv": "d870496610c781065b69b2db1d0479b2b55d6a67e1401b2c0c86792ad53947b8",
+    "december_predictions.csv": "5b29a160a7ff5a1e0c47e5c7bb015980df57e129b0eb847215e63ca563ac460e",
+    "scorer_results/candidate_december.png": "1071cf94a74dd94b50f9046b478e891edb9cad727f994cbefbab09dcdb0fd811"
+  },
+  "checks": {
+    "schema_ids_and_values_valid": true,
+    "template_order_preserved": true,
+    "december_input_values_preserved": true,
+    "original_csvs_unchanged": true,
+    "readme_spotter_unchanged": true,
+    "official_scorer_passed": true
+  },
+  "evaluation_note": "Hidden final labels are unavailable; the scorer validates format and draws a chart, not accuracy."
+}

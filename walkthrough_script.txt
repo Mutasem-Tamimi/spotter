@@ -1,0 +1,55 @@
+SPOTTER FREIGHT RATE PROJECT - 2-3 MINUTE WALKTHROUGH
+
+This script covers the assessment's requested topics. The accompanying video
+uses a standard computer-generated English narrator, not the applicant's voice.
+Code excerpts and charts come from this repository and its measured results.
+
+1. Problem and key findings
+This project predicts a shipment's total posted price in dollars. There are
+48,000 labeled loads from January through October, and 12,000 November and
+December loads with hidden prices. Exploration showed that distance and
+equipment are important pricing attributes. Distance dominates the fitted
+CatBoost model's feature importance. Large errors still occur, which is why
+the evaluation reports both average absolute error and root mean squared error.
+
+2. Data quality
+The labeled data contains 292 negative weights and 300 missing weights.
+We investigated negative magnitudes against equipment, routes, dates and
+comparable loads, rather than treating a similar median as proof. The pipeline
+adopts absolute weight as an explicit assumption, preserves a negative-weight
+flag, and leaves the original CSV unchanged. CatBoost retains missing numerical
+values, with a missing-weight flag. Negative longitudes stay unchanged. Unstable
+quote signals and the unavailable December market index are excluded.
+
+3. Split and training
+The split function uses dates: January through June for training, July and
+August for development, and September and October for evaluation. Assertions
+check complete coverage and no overlap. All three models use these exact rows
+and training seed 42. The date split itself needs no random seed. Preprocessing
+learns only from fitting rows. Development data chooses settings and stopping
+points; the test period is never used for early stopping.
+
+4. Model choice and results
+We compared CatBoost, XGBoost and a feed-forward neural network. The submitted
+CatBoost uses depth six and 94 trees. It handles categories and missing values
+directly. Its local test mean absolute error is about 128 dollars, versus
+229 dollars for the baseline. About 94.9 percent of predictions are within
+10 percent of actual prices. XGBoost wins development error, so CatBoost is
+not a universal winner. This reused test period is not fresh evidence for
+the final model choice.
+
+5. Important code
+The reusable feature transformer handles weight correction, calendar features
+and a training-fitted city-coordinate lookup. After evaluation, the final
+prediction script refits the fixed CatBoost configuration on all labeled
+rows. Predictions are matched to the template by load ID. The submission
+script reloads that same model for the reduced December schema and runs the
+original scorer. Notebook five executes these final checks and builds the report.
+
+6. December and delivery
+The scorer accepted all 12,000 final predictions and all 31 fixed December
+loads. December prices range from about 818 to 827 dollars. Only the date
+changes; this curve does not prove that holiday seasonality was learned.
+The PDF includes the split, comparison and required chart. Original data and
+the assessment README are preserved. Final accuracy remains unknown because
+Spotter holds the true November and December prices.

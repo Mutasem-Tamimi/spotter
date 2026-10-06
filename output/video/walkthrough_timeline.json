@@ -1,0 +1,36 @@
+{
+  "duration_seconds": 159.43,
+  "narration": "Standard Windows English synthetic voice; not the applicant's voice",
+  "segments": [
+    {
+      "title": "Problem and key findings",
+      "start_seconds": 0,
+      "duration_seconds": 24.01
+    },
+    {
+      "title": "Data quality",
+      "start_seconds": 24.01,
+      "duration_seconds": 30.33
+    },
+    {
+      "title": "Split and training",
+      "start_seconds": 54.33,
+      "duration_seconds": 25.25
+    },
+    {
+      "title": "Model choice and results",
+      "start_seconds": 79.58,
+      "duration_seconds": 30.51
+    },
+    {
+      "title": "Important code",
+      "start_seconds": 110.09,
+      "duration_seconds": 23.31
+    },
+    {
+      "title": "December and delivery",
+      "start_seconds": 133.4,
+      "duration_seconds": 26.03
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+# Optional dependencies for rebuilding and checking the PDF report.
+# Install after requirements.txt. They are not needed to run predictions.
+reportlab==4.4.9
+pypdf==6.10.0

@@ -257,32 +257,90 @@ to an independently measured score for these final predictions.
 Both the notebook and script validate all IDs, row count, column order, finite positive prices,
 saved-model reload, template ordering, and unchanged source/evaluation hashes.
 
-## Full assessment workflow
+## Completed submission files and report
 
-The following steps describe the eventual submission. Exploration and local
-CatBoost, XGBoost, and FFN training/evaluation are implemented, and the 12,000-row
-validation prediction file is generated. December predictions and the final
-report remain separate steps. Paths below match the supplied files
-in this checkout; the assessment uses `data/` paths and underscore filenames.
+Open [`notebooks/05_submission_and_report.ipynb`](notebooks/05_submission_and_report.ipynb).
+Its five executed code cells regenerate the official prediction files from the
+saved full-data model, run the supplied scorer, show the December chart, build
+the PDF report and verify preservation of the earlier work.
 
-## What to do
+| Deliverable | Location |
+| --- | --- |
+| Official validation predictions | [`validation_predictions.csv`](validation_predictions.csv) |
+| Completed December scenario | [`december_predictions.csv`](december_predictions.csv) |
+| Required scorer-generated chart | [`scorer_results/candidate_december.png`](scorer_results/candidate_december.png) |
+| Five-page PDF report | [`output/pdf/freight_rate_report.pdf`](output/pdf/freight_rate_report.pdf) |
+| Scorer output | [`scorer_results/scorer_output.txt`](scorer_results/scorer_output.txt) |
+| Prediction audit and hashes | [`outputs/submission/submission_checks.json`](outputs/submission/submission_checks.json) |
+| 2 minute 39 second walkthrough video | [`output/video/spotter_walkthrough.mp4`](output/video/spotter_walkthrough.mp4) |
+| Walkthrough script | [`walkthrough_script.txt`](walkthrough_script.txt) |
 
-1. Train and validate your model using `train-test.csv`.
-2. Predict every load in `validation.csv`. Each load has a unique `load_id`.
-3. Fill the matching `predicted_rate` values in `validation-predictions-template.csv` and save it as `validation-predictions.csv` (completed).
-4. Predict every row in `december-chart-inputs.csv` by filling its `predicted_rate` column.
-5. Install the scorer requirements and run:
+The official underscore-named validation file contains exactly the same bytes
+as the earlier `validation-predictions.csv`. Both have 12,000 rows in template
+order with only `load_id,predicted_rate`. `december_predictions.csv` preserves
+the original seven-column order and all input values; it fills 31 prices without
+overwriting `december-chart-inputs.csv`.
+
+The official scorer accepted both files. December predictions range from
+**$818.09 to $826.55**. Only the date changes in this fixed-load scenario; the
+curve is not evidence of learned holiday seasonality. The scorer validates
+format and generates the chart; Spotter calculates the hidden-target metrics.
+
+### Reproduce the submission
+
+With the environment above installed, run from the repository root:
 
 ```powershell
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe score.py --predictions validation-predictions.csv --december-predictions december-chart-inputs.csv
+# Optional report dependencies; prediction code does not require them.
+.\.venv\Scripts\python.exe -m pip install -r requirements-report.txt
+
+# Refit the already selected configuration on all 48,000 labeled loads.
+.\.venv\Scripts\python.exe predict_validation.py
+
+# Predict both final input schemas and run the original scorer.
+.\.venv\Scripts\python.exe complete_submission.py
+
+# Rebuild the PDF from saved measurements and the scorer-generated chart.
+.\.venv\Scripts\python.exe build_report.py
 ```
 
-The scorer validates both files and creates `scorer_results/candidate_december.png`.
+If the saved final pipeline already exists, the refit command is optional.
+The scorer can also be run directly:
 
-## Submit
+```powershell
+.\.venv\Scripts\python.exe score.py --predictions validation_predictions.csv --december-predictions december_predictions.csv
+```
 
-- GitHub repository containing your code, dependencies, and run instructions
-- `validation-predictions.csv`
-- PDF or DOCX report containing your validation, data split approach and `candidate_december.png`
-- 2-3 minute Loom link
+`complete_submission.py` checks source/model provenance, template IDs and order,
+finite positive predictions, CSV reload precision, December constants, coordinate
+lookup availability and preservation of source files and `readme-spotter.md`
+when present. The notebook also fingerprints all previous model/comparison files.
+The PDF was rendered and visually checked; the 18 existing pipeline tests pass.
+
+### Loom handoff
+
+The local video covers exploration findings, data quality, model choice, the
+chronological split, actual code excerpts and the December chart. It uses a
+clearly labeled standard computer-generated English narrator, not the applicant's
+voice. It is 159.5 seconds long, with 1080p video and an audio track.
+
+**The required Loom link is still pending.** Browser security blocked the
+recording controls. Upload the prepared MP4 in your Loom account if available,
+or record the walkthrough using the supplied script, then submit its accessible
+share link. No Loom link has been fabricated.
+
+Optional local video regeneration on Windows requires `ffmpeg` on PATH and an
+installed English System.Speech voice:
+
+```powershell
+.\.venv\Scripts\python.exe build_walkthrough.py
+```
+
+### Submit
+
+- Accessible repository: https://github.com/Mutasem-Tamimi/spotter
+- `validation_predictions.csv`
+- `output/pdf/freight_rate_report.pdf` (includes the required December chart)
+- The 2-3 minute Loom share link after the handoff above
+
+The supplied assessment instructions in `readme-spotter.md` are unchanged.

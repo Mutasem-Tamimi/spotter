@@ -1,0 +1,23 @@
+SPOTTER SUBMISSION
+
+Repository: https://github.com/Mutasem-Tamimi/spotter
+Final prediction file: validation_predictions.csv
+Report: output/pdf/freight_rate_report.pdf
+December predictions: december_predictions.csv
+Required chart: scorer_results/candidate_december.png
+Executed final workflow: notebooks/05_submission_and_report.ipynb
+
+LOOM LINK: pending user upload or recording.
+Prepared video: output/video/spotter_walkthrough.mp4 (2 minutes 39 seconds)
+Script: walkthrough_script.txt
+The video uses clearly labeled computer-generated narration, not the applicant's voice.
+Browser security blocked automated recording controls. Upload the MP4 to Loom
+if your account supports it, or record using the script, and submit the real link.
+
+Verification:
+- Official scorer accepted 12,000 validation rows and 31 December rows.
+- Existing pipeline suite: 18 tests passed.
+- Notebook 05: all five code cells executed without errors.
+- PDF: five pages, rendered and visually checked.
+- Source CSVs, earlier model artifacts, and readme-spotter.md are unchanged.
+- Final hidden-target accuracy is calculated by Spotter after submission.
