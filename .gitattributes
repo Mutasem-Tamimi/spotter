@@ -1,0 +1,7 @@
+# Preserve exact bytes for data hashes and binary deliverables on every OS.
+*.csv -text
+*.pdf binary
+*.png binary
+*.mp4 binary
+*.joblib binary
+*.zip binary
